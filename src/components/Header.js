@@ -7,8 +7,8 @@ const Header = ({ title }) => {
   }
 
   return (
-    <header className='App-header'>
-      <h1>{title}</h1>
+    <header>
+      <h1 className='text-xl'>{title}</h1>
       <Button
         bgColor = 'lightgreen'
         text = 'Add Money'
