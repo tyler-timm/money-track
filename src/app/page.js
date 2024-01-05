@@ -29,11 +29,11 @@ export default function Home() {
     }
 
     return (
-        <div className="App">
+        <main>
             <header>
                 <Header title="Budget Tracker" />
                 <Transactions transactions={transactions} onDelete={deleteTransaction} />
             </header>
-        </div>
+        </main>
     );
 }
