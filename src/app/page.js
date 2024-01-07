@@ -10,25 +10,25 @@ export default function Home() {
         {
             id: 1,
             amount: 5000,
-            text: "Deposit",
+            type: "Deposit",
             category: "Paycheck",
         },
         {
             id: 2,
             amount: -50,
-            text: "Withdrawal",
+            type: "Withdrawal",
             category: "Gas",
         },
         {
             id: 3,
             amount: -5,
-            text: "Withdrawal",
+            type: "Withdrawal",
             category: "Hot dogs",
         }
     ]);
 
     const onClick = () => {
-        console.log('button was clicked!')
+        console.log('button was clicked!');
     }
 
     const deleteTransaction = (id) => {
@@ -38,17 +38,17 @@ export default function Home() {
 
     return (
         <main className='m-5'>
-            <Header title="Budget Tracker" />
+            <Header />
             <Button
-                className='p-2 mr-5 mb-2 bg-green-700'
-                text='Add Money'
+                className='p-2 mb-5 bg-green-700'
+                text='Add Transaction'
                 onClick={onClick}
             />
-            <Button
+            {/* <Button
                 className='p-2 bg-red-700'
                 text="Remove Money"
                 onClick={onClick}
-            />
+            /> */}
             <TransactionList transactions={transactions} onDelete={deleteTransaction} />
         </main>
     );
