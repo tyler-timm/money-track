@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+.base-style {
     background-color: #264653;
     color: #fff;
+    font-family: sans-serif;
 }
