@@ -4,6 +4,7 @@ import { useState } from "react";
 import Header from "../components/Header";
 import TransactionList from "../components/TransactionList";
 import Button from '../components/Button';
+import Modal from '../components/Modal';
 
 export default function Home() {
     const [transactions, setTransactions] = useState([
@@ -27,8 +28,11 @@ export default function Home() {
         }
     ]);
 
-    const onClick = () => {
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const addTransactionOnClick = () => {
         console.log('button was clicked!');
+        setIsModalVisible(true);
     }
 
     const deleteTransaction = (id) => {
@@ -42,8 +46,10 @@ export default function Home() {
             <Button
                 className='p-2 mb-5 bg-green-700'
                 text='Add Transaction'
-                onClick={onClick}
+                onClick={addTransactionOnClick}
             />
+            <br />
+            <Modal isModalVisible={isModalVisible} />
             {/* <Button
                 className='p-2 bg-red-700'
                 text="Remove Money"
