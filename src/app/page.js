@@ -12,19 +12,19 @@ export default function Home() {
             id: 1,
             amount: 5000,
             type: "Deposit",
-            category: "Paycheck",
+            category: "Paycheck"
         },
         {
             id: 2,
             amount: -50,
             type: "Withdrawal",
-            category: "Gas",
+            category: "Gas"
         },
         {
             id: 3,
             amount: -5,
             type: "Withdrawal",
-            category: "Hot dogs",
+            category: "Hot dogs"
         }
     ]);
 
