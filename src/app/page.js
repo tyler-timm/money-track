@@ -31,7 +31,6 @@ export default function Home() {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const addTransactionOnClick = () => {
-        console.log('button was clicked!');
         setIsModalVisible(true);
     }
 
@@ -45,7 +44,7 @@ export default function Home() {
         <main className='m-5'>
             <Header />
             <Button
-                className='p-2 mb-5 bg-green-700'
+                className='p-2 mb-5 bg-green-700 drop-shadow-sm px-2 py-1 rounded'
                 text='Add Transaction'
                 onClick={addTransactionOnClick}
             />
