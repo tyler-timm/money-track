@@ -40,6 +40,7 @@ export default function Home() {
         setTransactions(transactions.filter(transaction => transaction.id !== id));
     }
 
+
     return (
         <main className='m-5'>
             <Header />
@@ -49,12 +50,7 @@ export default function Home() {
                 onClick={addTransactionOnClick}
             />
             <br />
-            <Modal isModalVisible={isModalVisible} />
-            {/* <Button
-                className='p-2 bg-red-700'
-                text="Remove Money"
-                onClick={onClick}
-            /> */}
+            <Modal isModalVisible={isModalVisible} hideOnCancel={() => setIsModalVisible(false)} />
             <TransactionList transactions={transactions} onDelete={deleteTransaction} />
         </main>
     );
