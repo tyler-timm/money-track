@@ -9,7 +9,7 @@ export async function GET(request) {
 
     try {
         if (!amount || !description || !type) throw new Error('All fields required');
-        await sql`INSERT INTO Transactions (Amount, Description, Type) VALUES (${amount}, ${desctiption}, ${type});`;
+        await sql`INSERT INTO Transactions (Amount, Description, Type) VALUES (${amount}, ${description}, ${type});`;
     } catch (error) {
         return NextResponse.json({ error }, { status: 500 });
     }
