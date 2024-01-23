@@ -39,6 +39,12 @@ export default function Home() {
         setTransactions(transactions.filter(transaction => transaction.id !== id));
     }
 
+    const hideOnCancel = (event) => {
+        setIsModalVisible(false);
+
+        event.preventDefault();
+    }
+
 
     return (
         <main className='m-5'>
@@ -49,7 +55,7 @@ export default function Home() {
                 onClick={addTransactionOnClick}
             />
             <br />
-            <Modal isModalVisible={isModalVisible} hideOnCancel={() => setIsModalVisible(false)} />
+            <Modal isModalVisible={isModalVisible} hideOnCancel={hideOnCancel} />
             <TransactionList transactions={transactions} onDelete={deleteTransaction} />
         </main>
     );
