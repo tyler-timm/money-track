@@ -7,18 +7,10 @@ export default function Modal({ isModalVisible, hideOnCancel }) {
     // const [type, setType] = useState('');
     // const [category, setCategory] = useState('');
 
-    const submitData = () => {
-        console.log({
-            amount: amount,
-            type: type,
-            category: category
-        });
-    }
-
     if (!isModalVisible) return null;
     return (
         <form action={createTransaction}>
-            <div className='border mb-5 p-3'>
+            <div className='border mb-5 p-3 w-1/3'>
                 Add Transaction
                 <br />
                 <label>
@@ -27,7 +19,7 @@ export default function Modal({ isModalVisible, hideOnCancel }) {
                         id='amount'
                         name='amount'
                         type='text'
-                        className='border m-2 text-black'
+                        className='border m-2 p-1 text-black'
                     />
                 </label>
                 <br />
@@ -37,7 +29,7 @@ export default function Modal({ isModalVisible, hideOnCancel }) {
                         id='type'
                         name='type'
                         type='text'
-                        className='border m-2 text-black'
+                        className='border m-2 p-1 text-black'
                     />
                 </label>
                 <br />
@@ -47,15 +39,17 @@ export default function Modal({ isModalVisible, hideOnCancel }) {
                         id='description'
                         name='description'
                         type='text'
-                        className='border m-2 text-black'
+                        className='border m-2 p-1 text-black'
                     />
                 </label>
                 <br />
                 <Button
                     className='bg-green-600 hover:bg-green-700 drop-shadow-sm px-2 py-1 mr-4 rounded'
-                    onClick={submitData}
                     text='Submit'
-                />
+                    type='submit'
+                >
+                    Submit
+                </Button>
                 <Button
                     className='bg-blue-600 hover:bg-blue-700 drop-shadow-sm px-2 py-1 rounded'
                     onClick={hideOnCancel}
