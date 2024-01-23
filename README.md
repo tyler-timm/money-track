@@ -8,6 +8,4 @@ Uses:
 - React
 - Next.js
 - Tailwind CSS
-
-TBD:
-- Database
+- Postgres DB
