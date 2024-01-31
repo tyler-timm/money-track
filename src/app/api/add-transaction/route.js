@@ -22,6 +22,9 @@ export async function GET(request) {
 
         // await sql`INSERT INTO Transactions (Amount, Description, Type) VALUES (${amount}, ${description}, ${type});`;
     } catch (error) {
+        if( error instanceof Prisma.PrismaClientValidationError){
+        return NextResponse.json({ error.message }, { status: 500 });
+            }
         return NextResponse.json({ error }, { status: 500 });
     }
 
