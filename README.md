@@ -9,4 +9,3 @@ Uses:
 - Next.js
 - Tailwind CSS
 - Postgres DB
-- Prisma ORM
