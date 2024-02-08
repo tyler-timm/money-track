@@ -1,12 +1,7 @@
 import Button from '../components/Button';
-import { useState } from 'react';
 import { createTransaction } from '@/app/lib/actions';
 
 export default function Modal({ isModalVisible, hideOnCancel }) {
-    // const [amount, setAmount] = useState('');
-    // const [type, setType] = useState('');
-    // const [category, setCategory] = useState('');
-
     if (!isModalVisible) return null;
     return (
         <form action={createTransaction}>
