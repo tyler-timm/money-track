@@ -1,32 +1,23 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import TransactionList from "../components/TransactionList";
 import Button from '../components/Button';
 import Modal from '../components/Modal';
 
 export default function Home() {
-    const [transactions, setTransactions] = useState([
-        {
-            id: 1,
-            amount: 5000,
-            type: "Deposit",
-            category: "Paycheck"
-        },
-        {
-            id: 2,
-            amount: -50,
-            type: "Withdrawal",
-            category: "Gas"
-        },
-        {
-            id: 3,
-            amount: -5,
-            type: "Withdrawal",
-            category: "Hot dogs"
-        }
-    ]);
+    const [transactions, setTransactions] = useState([]);
+
+    useEffect(() => {
+        fetch('./api/get-transactions')
+            .then(res => res.json())
+            .then(data => {
+                console.log('data', data.transactions.rows);
+                setTransactions(data.transactions.rows);
+            })
+    }, []);
+
 
     const [isModalVisible, setIsModalVisible] = useState(false);
 

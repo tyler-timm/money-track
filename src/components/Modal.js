@@ -19,20 +19,20 @@ export default function Modal({ isModalVisible, hideOnCancel }) {
                 </label>
                 <br />
                 <label>
-                    Type:
+                    Description:
                     <input
-                        id='type'
-                        name='type'
+                        id='description'
+                        name='description'
                         type='text'
                         className='border m-2 p-1 text-black'
                     />
                 </label>
                 <br />
                 <label>
-                    Description:
+                    Type:
                     <input
-                        id='description'
-                        name='description'
+                        id='type'
+                        name='type'
                         type='text'
                         className='border m-2 p-1 text-black'
                     />
