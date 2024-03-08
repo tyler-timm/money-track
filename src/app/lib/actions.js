@@ -15,7 +15,10 @@ export async function createTransaction(formData) {
 
     try {
         if (!rawFormData.amount || !rawFormData.description || !rawFormData.type) throw new Error('All fields required');
-        const amountInCents = rawFormData.amount * 100;
+        
+        let amountInCents = rawFormData.amount * 100;
+        if (rawFormData.type == 'withdrawal') amountInCents *= -1;
+
         const dbUpdate = await sql`INSERT INTO Transaction (Amount, Description, Type) VALUES (${amountInCents}, ${rawFormData.description}, ${rawFormData.type});`;
         console.log('dbUpdate', dbUpdate);
     } catch (error) {
