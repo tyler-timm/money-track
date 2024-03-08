@@ -26,3 +26,17 @@ export async function createTransaction(formData) {
     console.log('transactions', transactions.rows);
     return JSON.stringify(NextResponse.json({ transactions }, { status: 200 }));
 }
+
+export async function deleteTransaction(id) {
+    console.log('id to delete', id);
+
+    try {
+        const dbDelete = await sql`DELETE FROM Transaction WHERE id = ${id};`;
+        console.log('dbUpdate', dbDelete);
+    } catch (error) {
+        console.log('error', error);
+        return JSON.stringify(NextResponse.json({ error }, { status: 500 }));
+    }
+
+    return JSON.stringify(NextResponse.json({ id }, { status: 200 }));
+}

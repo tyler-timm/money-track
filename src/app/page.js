@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import TransactionList from "../components/TransactionList";
 import Button from '../components/Button';
 import Modal from '../components/Modal';
+import { deleteTransaction } from "./lib/actions";
 
 export default function Home() {
     const [transactions, setTransactions] = useState([]);
@@ -25,9 +26,11 @@ export default function Home() {
         setIsModalVisible(true);
     }
 
-    const deleteTransaction = (id) => {
-        console.log('delete', id)
+    const removeTransaction = (id) => {
+        console.log('delete', id);
         setTransactions(transactions.filter(transaction => transaction.id !== id));
+        const deleteResponse = deleteTransaction(id);
+        console.log('deleteResponse', deleteResponse);
     }
 
     const hideOnCancel = (event) => {
@@ -47,7 +50,7 @@ export default function Home() {
             />
             <br />
             <Modal isModalVisible={isModalVisible} hideOnCancel={hideOnCancel} />
-            <TransactionList transactions={transactions} onDelete={deleteTransaction} />
+            <TransactionList transactions={transactions} onDelete={removeTransaction} />
         </main>
     );
 }
