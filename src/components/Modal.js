@@ -9,17 +9,6 @@ export default function Modal({ isModalVisible, hideOnCancel }) {
                 Add Transaction
                 <br />
                 <label>
-                    Amount:
-                    <input
-                        id='amount'
-                        name='amount'
-                        type='text'
-                        placeholder='$0.00'
-                        className='border m-2 p-1 text-black rounded'
-                    />
-                </label>
-                <br />
-                <label>
                     Description:
                     <input
                         id='description'
@@ -39,6 +28,17 @@ export default function Modal({ isModalVisible, hideOnCancel }) {
                         <option value='deposit'>Deposit</option>
                         <option value='withdrawal'>Withdrawal</option>
                     </select>
+                </label>
+                <br />
+                <label>
+                    Amount:
+                    <input
+                        id='amount'
+                        name='amount'
+                        type='text'
+                        placeholder='$0.00'
+                        className='border m-2 p-1 text-black rounded'
+                    />
                 </label>
                 <br />
                 <Button

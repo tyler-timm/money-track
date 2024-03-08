@@ -15,7 +15,7 @@ export async function createTransaction(formData) {
 
     try {
         if (!rawFormData.amount || !rawFormData.description || !rawFormData.type) throw new Error('All fields required');
-        
+
         let amountInCents = rawFormData.amount * 100;
         if (rawFormData.type == 'withdrawal') amountInCents *= -1;
 
@@ -43,4 +43,10 @@ export async function deleteTransaction(id) {
     }
 
     return JSON.stringify(NextResponse.json({ id }, { status: 200 }));
+}
+
+export async function getTransactions() {
+    const transactions = await sql`SELECT * FROM Transaction;`;
+    console.log('transactions', transactions.rows);
+    return JSON.stringify(NextResponse.json({ transactions }, { status: 200 }));
 }

@@ -6,7 +6,7 @@ export default function TransactionList({ transactions, onDelete }) {
     total = total.toFixed(2);
 
     return (
-        <table>
+        <table className='text-lg'>
             <tbody>
                 <tr>
                     <td className='p-2 border font-bold'>Description</td>
@@ -21,7 +21,7 @@ export default function TransactionList({ transactions, onDelete }) {
 
                 <tr>
                     <td className='p-2 border text-right font-bold' colSpan='2'>Total</td>
-                    <td className='p-2 border'>${total}</td>
+                    <td className='p-2 border text-right'>${total}</td>
                 </tr>
             </tbody>
         </table>

@@ -12,12 +12,12 @@ export default function Home() {
 
     useEffect(() => {
         fetch('./api/get-transactions', { cache: 'no-store' })
-            .then(res => res.json())
-            .then(data => {
-                console.log('data', data.transactions.rows);
-                setTransactions(data.transactions.rows);
-            })
-    }, []);
+        .then(res => res.json())
+        .then(data => {
+            console.log('data', data.transactions.rows);
+            setTransactions(data.transactions.rows);
+        })
+            }, []);
 
 
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -39,18 +39,18 @@ export default function Home() {
         event.preventDefault();
     }
 
-
     return (
         <main className='m-5'>
             <Header />
+            <TransactionList transactions={transactions} onDelete={removeTransaction} />
+            <br />
             <Button
-                className='p-2 mb-5 bg-green-700 drop-shadow-sm px-2 py-1 rounded'
+                className='p-2 mb-5 bg-green-700 hover:bg-green-800 drop-shadow-sm px-2 py-1 rounded'
                 text='Add Transaction'
                 onClick={addTransactionOnClick}
             />
             <br />
             <Modal isModalVisible={isModalVisible} hideOnCancel={hideOnCancel} />
-            <TransactionList transactions={transactions} onDelete={removeTransaction} />
         </main>
     );
 }
