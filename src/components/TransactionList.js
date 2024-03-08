@@ -3,6 +3,7 @@ import Transaction from "./Transaction";
 export default function TransactionList({ transactions, onDelete }) {
     let total = 0;
     transactions.forEach(tran => total += tran.amount);
+    total = total.toFixed(2);
 
     return (
         <table>
@@ -19,7 +20,7 @@ export default function TransactionList({ transactions, onDelete }) {
                 ))}
 
                 <tr>
-                    <td className='p-2 border text-right'>{total}</td>
+                    <td className='p-2 border text-right'>${total}</td>
                     <td className='p-2 border' colSpan='3'>Total</td>
                 </tr>
             </tbody>
