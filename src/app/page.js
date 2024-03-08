@@ -10,7 +10,7 @@ export default function Home() {
     const [transactions, setTransactions] = useState([]);
 
     useEffect(() => {
-        fetch('./api/get-transactions')
+        fetch('./api/get-transactions', { cache: 'no-store' })
             .then(res => res.json())
             .then(data => {
                 console.log('data', data.transactions.rows);

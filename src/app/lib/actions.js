@@ -14,11 +14,11 @@ export async function createTransaction(formData) {
     /**@todo validate data */
 
     try {
-        if (!amount || !description || !type) throw new Error('All fields required');
+        if (!rawFormData.amount || !rawFormData.description || !rawFormData.type) throw new Error('All fields required');
         const dbUpdate = await sql`INSERT INTO Transaction (Amount, Description, Type) VALUES (${rawFormData.amount}, ${rawFormData.description}, ${rawFormData.type});`;
         console.log('dbUpdate', dbUpdate);
     } catch (error) {
-        console.log(JSON.stringify(NextResponse.json({ error }, { status: 500 })))
+        console.log('error', error);
         return JSON.stringify(NextResponse.json({ error }, { status: 500 }));
     }
 
