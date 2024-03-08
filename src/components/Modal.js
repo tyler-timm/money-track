@@ -14,6 +14,7 @@ export default function Modal({ isModalVisible, hideOnCancel }) {
                         id='amount'
                         name='amount'
                         type='text'
+                        placeholder='$0.00'
                         className='border m-2 p-1 text-black rounded'
                     />
                 </label>
@@ -30,12 +31,14 @@ export default function Modal({ isModalVisible, hideOnCancel }) {
                 <br />
                 <label>
                     Type:
-                    <input
+                    <select
                         id='type'
                         name='type'
-                        type='text'
                         className='border m-2 p-1 text-black rounded'
-                    />
+                    >
+                        <option value='deposit'>Deposit</option>
+                        <option value='withdrawal'>Withdrawal</option>
+                    </select>
                 </label>
                 <br />
                 <Button
