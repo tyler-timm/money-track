@@ -5,19 +5,18 @@ import Header from "../components/Header";
 import TransactionList from "../components/TransactionList";
 import Button from '../components/Button';
 import Modal from '../components/Modal';
-import { deleteTransaction } from "./lib/actions";
+import { deleteTransaction, getTransactions } from "./lib/actions";
 
 export default function Home() {
     const [transactions, setTransactions] = useState([]);
 
     useEffect(() => {
-        fetch('./api/get-transactions', { cache: 'no-store' })
-        .then(res => res.json())
-        .then(data => {
-            console.log('data', data.transactions.rows);
-            setTransactions(data.transactions.rows);
-        })
-            }, []);
+        getTransactions()
+            .then(res => JSON.parse(res))
+            .then(transactionData => {
+                setTransactions(transactionData);
+            });
+    }, []);
 
 
     const [isModalVisible, setIsModalVisible] = useState(false);

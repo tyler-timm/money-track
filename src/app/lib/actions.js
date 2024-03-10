@@ -2,6 +2,7 @@
 
 import { sql } from '@vercel/postgres';
 import { NextResponse } from 'next/server';
+import { unstable_noStore } from 'next/cache';
 
 export async function createTransaction(formData) {
     const rawFormData = {
@@ -46,7 +47,7 @@ export async function deleteTransaction(id) {
 }
 
 export async function getTransactions() {
+    unstable_noStore()
     const transactions = await sql`SELECT * FROM Transaction;`;
-    console.log('transactions', transactions.rows);
-    return JSON.stringify(NextResponse.json({ transactions }, { status: 200 }));
+    return JSON.stringify(transactions.rows);
 }
