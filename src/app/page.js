@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from "react";
+
 import Header from "../components/Header";
 import TransactionList from "../components/TransactionList";
 import Button from '../components/Button';
@@ -21,7 +22,7 @@ export default function Home() {
 
     const [isModalVisible, setIsModalVisible] = useState(false);
 
-    const addTransactionOnClick = () => {
+    const showAddTransactionModal = () => {
         setIsModalVisible(true);
     }
 
@@ -44,9 +45,9 @@ export default function Home() {
             <TransactionList transactions={transactions} onDelete={removeTransaction} />
             <br />
             <Button
-                className='p-2 mb-5 bg-green-700 hover:bg-green-800 drop-shadow-sm px-2 py-1 rounded'
+                className='p-2 mb-5 bg-green-700 hover:bg-green-800 drop-shadow-sm px-2 py-1 rounded text-lg'
                 text='Add Transaction'
-                onClick={addTransactionOnClick}
+                onClick={showAddTransactionModal}
             />
             <br />
             <Modal isModalVisible={isModalVisible} hideOnCancel={hideOnCancel} />

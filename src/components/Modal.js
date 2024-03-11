@@ -3,6 +3,7 @@ import { createTransaction } from '@/app/lib/actions';
 
 export default function Modal({ isModalVisible, hideOnCancel }) {
     if (!isModalVisible) return null;
+    
     return (
         <form action={createTransaction}>
             <div className='border mb-5 p-3 w-1/3'>
