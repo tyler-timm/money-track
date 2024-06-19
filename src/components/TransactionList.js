@@ -21,7 +21,7 @@ export default function TransactionList({ transactions, onDelete }) {
                 ))}
 
                 <tr>
-                    <td className='p-2 border text-right font-bold' colSpan='2'>Total</td>
+                    <td className='p-2 border text-right font-bold' colSpan='3'>Total</td>
                     <td className='p-2 border text-right'>${total}</td>
                 </tr>
             </tbody>
