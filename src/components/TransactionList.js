@@ -9,6 +9,7 @@ export default function TransactionList({ transactions, onDelete }) {
         <table className='text-lg'>
             <tbody>
                 <tr>
+                    <td className='p-2 border font-bold'>Date</td>
                     <td className='p-2 border font-bold'>Description</td>
                     <td className='p-2 border font-bold'>Type</td>
                     <td className='p-2 border font-bold'>Amount</td>

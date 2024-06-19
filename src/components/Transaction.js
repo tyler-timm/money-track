@@ -5,8 +5,12 @@ export default function Transaction({ transaction, onDelete }) {
     let transactionType = transaction.type;
     transactionType = transactionType.charAt(0).toUpperCase() + transactionType.slice(1);
 
+    let tranDate = new Date(transaction.createdAt);
+    tranDate = `${tranDate.getMonth() + 1}/${tranDate.getDate()}/${tranDate.getFullYear()}`
+
     return (
         <tr>
+            <td className='p-2 border'>{tranDate}</td>
             <td className='p-2 border'>{transaction.description}</td>
             <td className='p-2 border'>{transactionType}</td>
             <td className='p-2 border text-right'>${transaction.amount/100}</td>
