@@ -3,8 +3,10 @@
 import { sql } from '@vercel/postgres';
 import { NextResponse } from 'next/server';
 import { unstable_noStore } from 'next/cache';
+import { revalidatePath } from 'next/cache'
 
-export async function createTransaction(formData) {
+export async function createTransaction(prevState, formData) {
+    console.log('prevState', prevState);
     const rawFormData = {
         amount: formData.get('amount'),
         description: formData.get('description'),
@@ -29,6 +31,7 @@ export async function createTransaction(formData) {
 
     const transactions = await sql`SELECT * FROM Transaction;`;
     console.log('transactions', transactions.rows);
+    revalidatePath('/page');
     return JSON.stringify(NextResponse.json({ transactions }, { status: 200 }));
 }
 

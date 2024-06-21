@@ -1,11 +1,17 @@
 import Button from '../components/Button';
+import { useFormState } from 'react-dom';
 import { createTransaction } from '@/app/lib/actions';
+
+const initialState = {
+    message: 'Initial State'
+}
 
 export default function Modal({ isModalVisible, hideOnCancel }) {
     if (!isModalVisible) return null;
-    
+    const [state, formAction] = useFormState(createTransaction, initialState);
+
     return (
-        <form action={createTransaction}>
+        <form action={formAction}>
             <div className='border mb-5 p-3 w-1/3'>
                 Add Transaction
                 <br />
@@ -42,6 +48,7 @@ export default function Modal({ isModalVisible, hideOnCancel }) {
                     />
                 </label>
                 <br />
+                <p>State Message: {state?.message}</p>
                 <Button
                     className='bg-green-600 hover:bg-green-700 drop-shadow-sm px-2 py-1 mr-4 rounded'
                     text='Submit'
