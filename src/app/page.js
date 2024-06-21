@@ -26,11 +26,10 @@ export default function Home() {
         setIsModalVisible(true);
     }
 
-    const removeTransaction = (id) => {
+    const removeTransaction = async (id) => {
         console.log('delete', id);
-        setTransactions(transactions.filter(transaction => transaction.id !== id));
-        const deleteResponse = deleteTransaction(id);
-        console.log('deleteResponse', deleteResponse);
+        const transactionsAfterDelete = await deleteTransaction(id);
+        setTransactions(transactionsAfterDelete);
     }
 
     const hideOnCancel = (event) => {
@@ -50,7 +49,7 @@ export default function Home() {
                 onClick={showAddTransactionModal}
             />
             <br />
-            <Modal isModalVisible={isModalVisible} hideOnCancel={hideOnCancel} />
+            <Modal isModalVisible={isModalVisible} hideOnCancel={hideOnCancel} setTransactions={setTransactions}/>
         </main>
     );
 }

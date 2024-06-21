@@ -3,10 +3,9 @@
 import { sql } from '@vercel/postgres';
 import { NextResponse } from 'next/server';
 import { unstable_noStore } from 'next/cache';
-import { revalidatePath } from 'next/cache'
 
-export async function createTransaction(prevState, formData) {
-    console.log('prevState', prevState);
+export async function createTransaction(formData) {
+    unstable_noStore();
     const rawFormData = {
         amount: formData.get('amount'),
         description: formData.get('description'),
@@ -31,11 +30,11 @@ export async function createTransaction(prevState, formData) {
 
     const transactions = await sql`SELECT * FROM Transaction;`;
     console.log('transactions', transactions.rows);
-    revalidatePath('/page');
-    return JSON.stringify(NextResponse.json({ transactions }, { status: 200 }));
+    return transactions.rows;
 }
 
 export async function deleteTransaction(id) {
+    unstable_noStore();
     console.log('id to delete', id);
 
     try {
@@ -46,11 +45,13 @@ export async function deleteTransaction(id) {
         return JSON.stringify(NextResponse.json({ error }, { status: 500 }));
     }
 
-    return JSON.stringify(NextResponse.json({ id }, { status: 200 }));
+    const transactions = await sql`SELECT * FROM Transaction;`;
+    console.log('transactions', transactions.rows);
+    return transactions.rows;
 }
 
 export async function getTransactions() {
-    unstable_noStore()
+    unstable_noStore();
     const transactions = await sql`SELECT * FROM Transaction;`;
     return JSON.stringify(transactions.rows);
 }
