@@ -1,14 +1,15 @@
+'use client'
+
 import Button from '../components/Button';
 import { createTransaction } from '@/app/lib/actions';
 
-export default function Modal({ isModalVisible, hideOnCancel, setTransactions }) {
-    if (!isModalVisible) return null;
-
+export default function Modal() {
     return (
         <form action={
             async formData => {
                 const newData = await createTransaction(formData);
-                setTransactions(newData);
+                console.log('newData', newData);
+                // setTransactions(newData);
             }
         }>
             <div className='border mb-5 p-3 w-1/3'>
@@ -56,7 +57,6 @@ export default function Modal({ isModalVisible, hideOnCancel, setTransactions })
                 </Button>
                 <Button
                     className='bg-blue-600 hover:bg-blue-700 drop-shadow-sm px-2 py-1 rounded'
-                    onClick={hideOnCancel}
                     text='Cancel'
                 />
             </div>

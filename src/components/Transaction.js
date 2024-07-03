@@ -1,6 +1,9 @@
-import Button from './Button';
+'use client';
 
-export default function Transaction({ transaction, onDelete }) {
+import Button from './Button';
+import { deleteTransaction } from '@/app/lib/actions';
+
+export default function Transaction({ transaction }) {
 
     let transactionType = transaction.type;
     transactionType = transactionType.charAt(0).toUpperCase() + transactionType.slice(1);
@@ -17,7 +20,7 @@ export default function Transaction({ transaction, onDelete }) {
             <td className='p-2 border text-center'>
                 <Button
                     className='bg-red-500 hover:bg-red-600 drop-shadow-sm px-2 py-1 rounded'
-                    onClick={() => onDelete(transaction.id)}
+                    onClick={() => deleteTransaction(transaction.id)}
                     text='X'
                 />
             </td>

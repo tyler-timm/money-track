@@ -1,6 +1,11 @@
 import Transaction from "./Transaction";
+import { getTransactions } from "@/app/lib/actions";
 
-export default function TransactionList({ transactions, onDelete }) {
+export default async function TransactionList() {
+    const transactions = await getTransactions()
+        .then(res => JSON.parse(res))
+        .then(transactionData => transactionData);
+    console.log('transactions', transactions);
     let total = 0;
     transactions.forEach(tran => total += tran.amount / 100);
     total = total.toFixed(2);
@@ -17,7 +22,7 @@ export default function TransactionList({ transactions, onDelete }) {
                 </tr>
 
                 {transactions.map((transaction, id) => (
-                    <Transaction key={id} transaction={transaction} onDelete={onDelete} />
+                    <Transaction key={id} transaction={transaction}/>
                 ))}
 
                 <tr>
