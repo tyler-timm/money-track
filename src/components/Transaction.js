@@ -1,6 +1,5 @@
 'use client';
 
-import Button from './Button';
 import { deleteTransaction } from '@/app/lib/actions';
 
 export default function Transaction({ transaction }) {
@@ -16,13 +15,14 @@ export default function Transaction({ transaction }) {
             <td className='p-2 border'>{tranDate}</td>
             <td className='p-2 border'>{transaction.description}</td>
             <td className='p-2 border'>{transactionType}</td>
-            <td className='p-2 border text-right'>${transaction.amount/100}</td>
+            <td className='p-2 border text-right'>${(transaction.amount / 100).toFixed(2)}</td>
             <td className='p-2 border text-center'>
-                <Button
+                <button
                     className='bg-red-500 hover:bg-red-600 drop-shadow-sm px-2 py-1 rounded'
-                    onClick={() => deleteTransaction(transaction.id)}
-                    text='X'
-                />
+                    onClick={async () => await deleteTransaction(transaction.id)}
+                >
+                    X
+                </button>
             </td>
         </tr>
     )

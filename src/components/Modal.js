@@ -12,8 +12,8 @@ export default function Modal() {
                 // setTransactions(newData);
             }
         }>
-            <div className='border mb-5 p-3 w-1/3'>
-                Add Transaction
+            <div className='border mb-5 p-3 w-96'>
+                <span className='font-bold text-lg'>Add Transaction</span>
                 <br />
                 <label>
                     Description:

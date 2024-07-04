@@ -4,8 +4,6 @@ import { getTransactions } from "@/app/lib/actions";
 export default async function TransactionList() {
     const transactions = await getTransactions()
         .then(res => JSON.parse(res))
-        .then(transactionData => transactionData);
-    console.log('transactions', transactions);
     let total = 0;
     transactions.forEach(tran => total += tran.amount / 100);
     total = total.toFixed(2);
