@@ -6,6 +6,7 @@ export default async function TransactionList() {
         .then(res => JSON.parse(res))
     let total = 0;
     transactions.forEach(tran => total += tran.amount / 100);
+    console.log('transactions', transactions);
     total = total.toFixed(2);
 
     return (
