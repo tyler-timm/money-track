@@ -4,7 +4,7 @@ import Modal from '../components/Modal';
 export default async function Home() {
 
     return (
-        <main className='m-5'>
+        <main className='m-5 flex gap-5'>
             <TransactionList />
             <br />
             <Modal />
