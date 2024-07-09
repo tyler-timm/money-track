@@ -6,6 +6,7 @@ import { revalidatePath } from 'next/cache';
 
 export async function createTransaction(formData) {
     const rawFormData = {
+        date: formData.get('date'),
         amount: formData.get('amount'),
         description: formData.get('description'),
         type: formData.get('type')

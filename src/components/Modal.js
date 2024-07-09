@@ -4,24 +4,26 @@ import Button from '../components/Button';
 import { createTransaction } from '@/app/lib/actions';
 
 export default function Modal() {
+    const today = new Date();
+    const dateString = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+
     return (
         <form action={
             async formData => {
                 const newData = await createTransaction(formData);
                 console.log('newData', newData);
-                // setTransactions(newData);
             }
         }>
-            <div className='mb-5 p-3 w-96 text-lg'>
-                <span className='font-bold text-lg'>Add Transaction</span>
-                <br />
+            <div className='w-96 text-lg leading-normal'>
+                <h1 className='font-bold text-xl pb-3'>Add Transaction</h1>
                 <label>
-                    Description:
+                    Date:
                     <input
-                        id='description'
-                        name='description'
-                        type='text'
+                        id='date'
+                        name='date'
+                        type='date'
                         className='border m-2 p-1 text-black rounded'
+                        defaultValue={dateString}
                     />
                 </label>
                 <br />
@@ -30,11 +32,22 @@ export default function Modal() {
                     <select
                         id='type'
                         name='type'
-                        className='border m-2 p-1 text-black rounded'
+                        className='border m-2 p-2 text-black rounded'
                     >
                         <option value='deposit'>Deposit</option>
                         <option value='withdrawal'>Withdrawal</option>
                     </select>
+                </label>
+                <br />
+                <label>
+                    Description:
+                    <input
+                        id='description'
+                        name='description'
+                        type='text'
+                        className='border m-2 p-1 text-black rounded'
+                        placeholder='What did you buy?'
+                    />
                 </label>
                 <br />
                 <label>
@@ -49,7 +62,7 @@ export default function Modal() {
                 </label>
                 <br />
                 <Button
-                    className='bg-green-600 hover:bg-green-700 drop-shadow-sm px-2 py-1 mr-4 rounded'
+                    className='bg-green-600 hover:bg-green-700 drop-shadow-sm px-2 py-1 mr-4 mt-3 rounded'
                     text='Submit'
                     type='submit'
                 >
