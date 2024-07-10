@@ -7,7 +7,7 @@ export default function Transaction({ transaction }) {
     let transactionType = transaction.type;
     transactionType = transactionType.charAt(0).toUpperCase() + transactionType.slice(1);
 
-    let tranDate = new Date(transaction.createdAt);
+    let tranDate = new Date(transaction.date);
     tranDate = `${tranDate.getMonth() + 1}/${tranDate.getDate()}/${tranDate.getFullYear()}`
 
     return (

@@ -18,7 +18,8 @@ export async function createTransaction(formData) {
     try {
         if (!rawFormData.amount || !rawFormData.description || !rawFormData.type) throw new Error('All fields required');
         let date = new Date(); // default to today
-        if(rawFormData.date) date = new Date(rawFormData.date);
+        console.log('rawFormData.date', rawFormData.date);
+        if(rawFormData.date) date = new Date(`${rawFormData.date}T00:00:00`);
 
         let amountInCents = rawFormData.amount * 100;
         if (rawFormData.type == 'withdrawal') amountInCents *= -1;
