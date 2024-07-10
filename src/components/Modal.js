@@ -14,7 +14,7 @@ export default function Modal() {
                 console.log('newData', newData);
             }
         }>
-            <div className='w-96 text-lg leading-normal'>
+            <div className='w-96 text-lg leading-normal flex flex-col items-end justify-start gap-0'>
                 <h1 className='font-bold text-xl pb-3'>Add Transaction</h1>
                 <label>
                     Date:
@@ -26,7 +26,6 @@ export default function Modal() {
                         defaultValue={dateString}
                     />
                 </label>
-                <br />
                 <label>
                     Type:
                     <select
@@ -38,7 +37,6 @@ export default function Modal() {
                         <option value='withdrawal'>Withdrawal</option>
                     </select>
                 </label>
-                <br />
                 <label>
                     Description:
                     <input
@@ -49,7 +47,6 @@ export default function Modal() {
                         placeholder='What did you buy?'
                     />
                 </label>
-                <br />
                 <label>
                     Amount:
                     <input
@@ -60,18 +57,17 @@ export default function Modal() {
                         className='border m-2 p-1 text-black rounded'
                     />
                 </label>
-                <br />
                 <Button
-                    className='bg-green-600 hover:bg-green-700 drop-shadow-sm px-2 py-1 mr-4 mt-3 rounded'
+                    className='bg-green-600 hover:bg-green-700 drop-shadow-sm px-2 py-1 my-4 rounded'
                     text='Submit'
                     type='submit'
                 >
                     Submit
                 </Button>
-                <Button
+                {/* <Button
                     className='bg-blue-600 hover:bg-blue-700 drop-shadow-sm px-2 py-1 rounded'
                     text='Cancel'
-                />
+                /> */}
             </div>
         </form>
     )
