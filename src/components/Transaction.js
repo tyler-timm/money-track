@@ -16,13 +16,11 @@ export default function Transaction({ transaction }) {
             <td className='p-2 border'>{transaction.description}</td>
             <td className='p-2 border'>{transactionType}</td>
             <td className='p-2 border text-right'>${(transaction.amount / 100).toFixed(2)}</td>
-            <td className='p-2 border text-center'>
+            <td className='p-2 text-center'>
                 <button
-                    className='bg-red-500 hover:bg-red-600 drop-shadow-sm px-2 py-1 rounded'
+                    className='border hover:bg-red-900 drop-shadow-sm px-2 rounded'
                     onClick={async () => await deleteTransaction(transaction.id)}
-                >
-                    X
-                </button>
+                >X</button>
             </td>
         </tr>
     )

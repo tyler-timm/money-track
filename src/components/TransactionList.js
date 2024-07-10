@@ -19,7 +19,7 @@ export default async function TransactionList() {
                         <td className='p-2 border font-bold'>Description</td>
                         <td className='p-2 border font-bold'>Type</td>
                         <td className='p-2 border font-bold'>Amount</td>
-                        <td className='p-2 border font-bold'>Delete</td>
+                        <td className='p-2 font-bold'></td>
                     </tr>
 
                     {transactions.map((transaction, id) => (
