@@ -7,9 +7,10 @@ import { revalidatePath } from 'next/cache';
 export async function createTransaction(formData) {
     const rawFormData = {
         date: formData.get('date'),
-        amount: formData.get('amount'),
+        type: formData.get('type'),
         description: formData.get('description'),
-        type: formData.get('type')
+        recurring: formData.get('recurring-monthly'),
+        amount: formData.get('amount'),
     }
     console.log('rawFormData', rawFormData);
 
@@ -24,7 +25,7 @@ export async function createTransaction(formData) {
         let amountInCents = rawFormData.amount * 100;
         if (rawFormData.type == 'withdrawal') amountInCents *= -1;
 
-        const dbUpdate = await sql`INSERT INTO Transaction (Date, Amount, Description, Type) VALUES (${date}, ${amountInCents}, ${rawFormData.description}, ${rawFormData.type});`;
+        const dbUpdate = await sql`INSERT INTO Transaction (Date, Amount, Description, Type, Recurring) VALUES (${date}, ${amountInCents}, ${rawFormData.description}, ${rawFormData.type}, ${rawFormData.recurring});`;
         console.log('dbUpdate', dbUpdate);
         revalidatePath('/');
         return JSON.stringify(NextResponse.json({ dbUpdate }, { status: 200 }));

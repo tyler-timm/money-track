@@ -15,7 +15,7 @@ export default function Modal() {
             }
         }>
             <div className='w-96 text-lg leading-normal flex flex-col items-end justify-start gap-0'>
-                <h1 className='font-bold text-xl pb-3'>Add Transaction</h1>
+                <h1 className='font-bold text-xl pb-3 text-yellow-500'>Add Transaction</h1>
                 <label>
                     Date:
                     <input
@@ -48,6 +48,15 @@ export default function Modal() {
                     />
                 </label>
                 <label>
+                    Monthly:
+                    <input
+                        id='recurring-monthly'
+                        name='recurring-monthly'
+                        type='checkbox'
+                        className='border m-2 w-5 h-5 text-black rounded'
+                    />
+                </label>
+                <label>
                     Amount:
                     <input
                         id='amount'
@@ -58,16 +67,12 @@ export default function Modal() {
                     />
                 </label>
                 <Button
-                    className='bg-green-600 hover:bg-green-700 drop-shadow-sm px-2 py-1 my-4 rounded'
+                    className='bg-green-700 hover:bg-green-800 drop-shadow-md px-2 py-1 my-4 rounded'
                     text='Submit'
                     type='submit'
                 >
                     Submit
                 </Button>
-                {/* <Button
-                    className='bg-blue-600 hover:bg-blue-700 drop-shadow-sm px-2 py-1 rounded'
-                    text='Cancel'
-                /> */}
             </div>
         </form>
     )
