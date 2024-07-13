@@ -14,7 +14,7 @@ export default function Modal() {
                 console.log('newData', newData);
             }
         }>
-            <div className='w-96 text-lg leading-normal flex flex-col items-end justify-start gap-0'>
+            <aside className='w-96 text-lg leading-normal flex flex-col items-start justify-start gap-0'>
                 <h1 className='font-bold text-xl pb-3 text-yellow-500'>Add Transaction</h1>
                 <label>
                     Date:
@@ -73,7 +73,7 @@ export default function Modal() {
                 >
                     Submit
                 </Button>
-            </div>
+            </aside>
         </form>
     )
 }

@@ -11,8 +11,6 @@ export default function Transaction({ transaction }) {
     tranDate = `${tranDate.getMonth() + 1}/${tranDate.getDate()}/${tranDate.getFullYear()}`;
 
     let recurring = transaction.recurring ? 'Yes' : 'No';
-    console.log('recurring', recurring);
-    // console.log('recurring', recurring.toString());
 
     return (
         <tr>

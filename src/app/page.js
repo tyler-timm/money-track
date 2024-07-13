@@ -4,9 +4,9 @@ import Modal from '../components/Modal';
 export default async function Home() {
 
     return (
-        <main className='m-5 flex gap-10'>
-            <TransactionList />
+        <main className='container m-6 flex flex-row flex-wrap gap-5 lg:gap-20'>
             <Modal />
+            <TransactionList />
         </main>
     );
 }

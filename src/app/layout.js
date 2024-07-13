@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
         <html lang="en">
             <body className={`base-style ${notoSans.className}`}>
                 <Header />
-                <main className='container mx-auto flex flex-col items-center justify-center'>{children}</main>
+                <main className=''>{children}</main>
             </body>
         </html>
     )
