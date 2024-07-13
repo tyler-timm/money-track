@@ -1,6 +1,13 @@
 import './globals.css'
 import { Noto_Sans } from 'next/font/google';
 import Header from '@/components/Header';
+import {
+    ClerkProvider,
+    SignInButton,
+    SignedIn,
+    SignedOut,
+    UserButton
+} from '@clerk/nextjs'
 
 export const metadata = {
     title: 'Money Track',
@@ -14,11 +21,19 @@ const notoSans = Noto_Sans({
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en">
-            <body className={`base-style ${notoSans.className}`}>
-                <Header />
-                <main className=''>{children}</main>
-            </body>
-        </html>
+        <ClerkProvider>
+            <html lang="en">
+                <body className={`base-style ${notoSans.className}`}>
+                    <Header />
+                    <SignedOut>
+                        <SignInButton />
+                    </SignedOut>
+                    <SignedIn>
+                        <UserButton />
+                        <main className=''>{children}</main>
+                    </SignedIn>
+                </body>
+            </html>
+        </ClerkProvider>
     )
 }
