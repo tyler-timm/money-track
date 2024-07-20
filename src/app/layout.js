@@ -3,10 +3,8 @@ import { Noto_Sans } from 'next/font/google';
 import Header from '@/components/Header';
 import {
     ClerkProvider,
-    SignInButton,
     SignedIn,
     SignedOut,
-    UserButton
 } from '@clerk/nextjs'
 
 export const metadata = {
@@ -25,12 +23,8 @@ export default function RootLayout({ children }) {
             <html lang="en">
                 <body className={`base-style ${notoSans.className}`}>
                     <Header />
-                    <SignedOut>
-                        <SignInButton />
-                    </SignedOut>
                     <SignedIn>
-                        <UserButton />
-                        <main className=''>{children}</main>
+                        <main>{children}</main>
                     </SignedIn>
                 </body>
             </html>
