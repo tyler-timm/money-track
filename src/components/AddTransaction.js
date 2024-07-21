@@ -8,13 +8,13 @@ export default function Modal() {
     const dateString = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
 
     return (
-        <form action={
-            async formData => {
-                const newData = await createTransaction(formData);
-                console.log('newData', newData);
-            }
-        }>
-            <aside className='w-96 text-lg leading-normal flex flex-col items-start justify-start gap-0'>
+        <aside className='w-96 text-lg leading-normal flex flex-col items-start justify-start gap-0 xl:fixed'>
+            <form action={
+                async formData => {
+                    const newData = await createTransaction(formData);
+                    console.log('newData', newData);
+                }
+            }>
                 <h1 className='font-bold text-xl pb-3 text-yellow-500'>Add Transaction</h1>
                 <label>
                     Date:
@@ -73,7 +73,7 @@ export default function Modal() {
                 >
                     Submit
                 </Button>
-            </aside>
-        </form>
+            </form>
+        </aside>
     )
 }

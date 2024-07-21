@@ -24,7 +24,7 @@ export default async function TransactionList() {
     total = total.toFixed(2);
 
     return (
-        <div>
+        <div className='flex flex-row justify-center flex-wrap gap-5 lg:gap-20'>
             <table className='text-lg'>
                 <tbody>
                     <tr>

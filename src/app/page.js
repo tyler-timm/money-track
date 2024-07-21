@@ -4,7 +4,7 @@ import AddTransaction from '../components/AddTransaction';
 export default async function Home() {
 
     return (
-        <main className='container m-6 flex flex-row justify-center flex-wrap gap-5 lg:gap-20'>
+        <main className='ml-10'>
             <AddTransaction />
             <TransactionList />
         </main>
