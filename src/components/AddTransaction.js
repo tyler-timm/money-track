@@ -8,15 +8,15 @@ export default function Modal() {
     const dateString = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
 
     return (
-        <aside className='w-96 text-lg leading-normal flex flex-col items-start justify-start gap-0 xl:fixed'>
-            <form action={
-                async formData => {
-                    const newData = await createTransaction(formData);
-                    console.log('newData', newData);
-                }
-            }>
+        <form action={
+            async formData => {
+                const newData = await createTransaction(formData);
+                console.log('newData', newData);
+            }
+        }>
+            <aside className='w-96 text-lg leading-normal flex flex-col items-start justify-start gap-0 xl:fixed'>
                 <h2 className='font-bold text-xl pb-3 text-yellow-500'>Add Transaction</h2>
-                <label>
+                <label htmlFor='date'>
                     Date:
                     <input
                         id='date'
@@ -26,8 +26,7 @@ export default function Modal() {
                         defaultValue={dateString}
                     />
                 </label>
-                <br />
-                <label>
+                <label htmlFor='type'>
                     Type:
                     <select
                         id='type'
@@ -38,8 +37,7 @@ export default function Modal() {
                         <option value='withdrawal'>Withdrawal</option>
                     </select>
                 </label>
-                <br />
-                <label>
+                <label htmlFor='description'>
                     Description:
                     <input
                         id='description'
@@ -49,8 +47,7 @@ export default function Modal() {
                         placeholder='What did you buy?'
                     />
                 </label>
-                <br />
-                <label>
+                <label htmlFor='recurring-monthly'>
                     Monthly:
                     <input
                         id='recurring-monthly'
@@ -59,8 +56,7 @@ export default function Modal() {
                         className='border m-2 w-5 h-5 text-black rounded'
                     />
                 </label>
-                <br />
-                <label>
+                <label htmlFor='amount'>
                     Amount:
                     <input
                         id='amount'
@@ -77,7 +73,7 @@ export default function Modal() {
                 >
                     Submit
                 </Button>
-            </form>
-        </aside>
+            </aside>
+        </form>
     )
 }
