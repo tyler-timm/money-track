@@ -15,7 +15,7 @@ export default function Modal() {
                     console.log('newData', newData);
                 }
             }>
-                <h1 className='font-bold text-xl pb-3 text-yellow-500'>Add Transaction</h1>
+                <h2 className='font-bold text-xl pb-3 text-yellow-500'>Add Transaction</h2>
                 <label>
                     Date:
                     <input
@@ -26,6 +26,7 @@ export default function Modal() {
                         defaultValue={dateString}
                     />
                 </label>
+                <br />
                 <label>
                     Type:
                     <select
@@ -37,6 +38,7 @@ export default function Modal() {
                         <option value='withdrawal'>Withdrawal</option>
                     </select>
                 </label>
+                <br />
                 <label>
                     Description:
                     <input
@@ -47,6 +49,7 @@ export default function Modal() {
                         placeholder='What did you buy?'
                     />
                 </label>
+                <br />
                 <label>
                     Monthly:
                     <input
@@ -56,6 +59,7 @@ export default function Modal() {
                         className='border m-2 w-5 h-5 text-black rounded'
                     />
                 </label>
+                <br />
                 <label>
                     Amount:
                     <input

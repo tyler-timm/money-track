@@ -3,6 +3,9 @@
 import { sql } from '@vercel/postgres';
 import { NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
+import { auth } from '@clerk/nextjs/server';
+
+const { userId } = auth();
 
 export async function createTransaction(formData) {
     const rawFormData = {
@@ -18,6 +21,8 @@ export async function createTransaction(formData) {
 
     try {
         if (!rawFormData.amount || !rawFormData.description || !rawFormData.type) throw new Error('All fields required');
+        if (!userId) throw new Error('Not logged in');
+
         let date = new Date(); // default to today
         console.log('rawFormData.date', rawFormData.date);
         if(rawFormData.date) date = new Date(`${rawFormData.date}T00:00:00`);
@@ -25,7 +30,7 @@ export async function createTransaction(formData) {
         let amountInCents = rawFormData.amount * 100;
         if (rawFormData.type == 'withdrawal') amountInCents *= -1;
 
-        const dbUpdate = await sql`INSERT INTO Transaction (Date, Amount, Description, Type, Recurring) VALUES (${date}, ${amountInCents}, ${rawFormData.description}, ${rawFormData.type}, ${rawFormData.recurring});`;
+        const dbUpdate = await sql`INSERT INTO Transaction (Date, Amount, Description, Type, Recurring, UserId) VALUES (${date}, ${amountInCents}, ${rawFormData.description}, ${rawFormData.type}, ${rawFormData.recurring}, ${userId});`;
         console.log('dbUpdate', dbUpdate);
         revalidatePath('/');
         return JSON.stringify(NextResponse.json({ dbUpdate }, { status: 200 }));
@@ -50,6 +55,8 @@ export async function deleteTransaction(id) {
 }
 
 export async function getTransactions() {
-    const transactions = await sql`SELECT * FROM Transaction;`;
+
+    const transactions = await sql`SELECT * FROM Transaction
+    WHERE UserId = ${userId};`;
     return JSON.stringify(transactions.rows);
 }

@@ -10,7 +10,7 @@ export default function Header() {
                 <ul className='self-end justify-center mr-10 text-yellow-500 text-xl'>
                     <SignInButton />
                 </ul>
-                <p className='text-lg'>Please sign in to view your transactions</p>
+                <h2 className='text-lg'>Please sign in to view your transactions</h2>
             </SignedOut>
             <SignedIn>
                 <ul className='self-end justify-center mr-10 text-yellow-500 text-xl'>
