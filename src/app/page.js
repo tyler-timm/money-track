@@ -1,11 +1,11 @@
 import TransactionList from "../components/TransactionList";
-import Modal from '../components/Modal';
+import AddTransaction from '../components/AddTransaction';
 
 export default async function Home() {
 
     return (
         <main className='container m-6 flex flex-row justify-center flex-wrap gap-5 lg:gap-20'>
-            <Modal />
+            <AddTransaction />
             <TransactionList />
         </main>
     );
