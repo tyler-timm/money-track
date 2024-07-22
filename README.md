@@ -8,4 +8,5 @@ Uses:
 - React
 - Next.js
 - Tailwind CSS
-- Postgres DB
+- Postgres DB (Vercel Postgres)
+- Clerk Authentication
