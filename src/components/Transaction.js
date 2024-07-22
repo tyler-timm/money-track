@@ -14,21 +14,21 @@ export default function Transaction({ transaction }) {
 
     return (
         <tr>
-            <td className='p-2 border'>{tranDate}</td>
+            <td className='px-2 border'>{tranDate}</td>
             {transaction.recurring ? (
-                <td className='p-2 border text-yellow-500'>{recurring}</td>
+                <td className='px-2 border text-yellow-500 hidden sm:table-cell'>{recurring}</td>
             ) : (
-                <td className='p-2 border'>{recurring}</td>
+                <td className='px-2 border hidden sm:table-cell'>{recurring}</td>
             )}
-            <td className='p-2 border'>{transaction.description}</td>
-            <td className='p-2 border'>{transactionType}</td>
+            <td className='px-2 border'>{transaction.description}</td>
+            <td className='px-2 border hidden md:table-cell'>{transactionType}</td>
             {transaction.amount > 0 ? (
-                <td className='p-2 border text-right text-green-400'>${(transaction.amount / 100).toFixed(2)}</td>
+                <td className='px-2 border text-right text-green-400'>${(transaction.amount / 100).toFixed(2)}</td>
             ) : (
-                <td className='p-2 border text-right text-red-400'>${(transaction.amount / 100).toFixed(2)}</td>
+                <td className='px-2 border text-right text-red-400'>${(transaction.amount / 100).toFixed(2)}</td>
             )}
             
-            <td className='p-2 text-center'>
+            <td className='px-2 text-center'>
                 <button
                     className='border hover:bg-red-900 drop-shadow-md px-2 rounded'
                     onClick={async () => await deleteTransaction(transaction.id)}

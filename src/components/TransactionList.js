@@ -24,14 +24,14 @@ export default async function TransactionList() {
     total = total.toFixed(2);
 
     return (
-        <div className='flex flex-row justify-center flex-wrap gap-5 lg:gap-20'>
+        <div className='flex flex-row justify-start sm:justify-center flex-wrap gap-5 sm:gap-20'>
             <table className='text-lg'>
                 <tbody>
                     <tr>
                         <td className='p-2 border font-bold'>Date</td>
-                        <td className='p-2 border font-bold'>Monthly</td>
+                        <td className='p-2 border font-bold hidden sm:table-cell'>Monthly</td>
                         <td className='p-2 border font-bold'>Description</td>
-                        <td className='p-2 border font-bold'>Type</td>
+                        <td className='p-2 border font-bold hidden sm:table-cell'>Type</td>
                         <td className='p-2 border font-bold'>Amount</td>
                         <td className='p-2 font-bold'></td>
                     </tr>
