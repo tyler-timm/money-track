@@ -5,9 +5,8 @@ import { NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
 import { auth } from '@clerk/nextjs/server';
 
-const { userId } = auth();
-
 export async function createTransaction(formData) {
+    const { userId } = auth();
     const rawFormData = {
         date: formData.get('date'),
         type: formData.get('type'),
@@ -55,6 +54,7 @@ export async function deleteTransaction(id) {
 }
 
 export async function getTransactions() {
+    const { userId } = auth();
 
     const transactions = await sql`SELECT * FROM Transaction
     WHERE UserId = ${userId};`;
