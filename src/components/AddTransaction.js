@@ -10,22 +10,24 @@ export default function Modal() {
     const dateString = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
 
     return (
-        <div className="flex flex-col items-start justify-start gap-0">
+        <div>
             <button
-                className='bg-blue-700 hover:bg-blue-800 drop-shadow-md px-2 py-1 my-2 rounded inline-block'
+                className='bg-blue-700 hover:bg-blue-800 drop-shadow-md px-2 py-1 my-2 rounded'
                 type='button'
                 onClick={() => setModalIsVisible(!modalIsVisible)}
             >
                 Show/Hide
             </button>
             {modalIsVisible &&
-                <form action={
-                    async formData => {
-                        const newData = await createTransaction(formData);
-                        console.log('newData', newData);
+                <aside className='w-96 text-lg leading-normal xl:fixed'>
+                    <form action={
+                        async formData => {
+                            const newData = await createTransaction(formData);
+                            console.log('newData', newData);
+                        }
                     }
-                }>
-                    <aside className='w-96 text-lg leading-normal xl:fixed'>
+                        className='flex flex-col items-start justify-start gap-0'
+                    >
                         <h2 className='font-bold text-xl pb-3 text-yellow-500'>Add Transaction</h2>
                         <label htmlFor='date'>
                             Date:
@@ -55,7 +57,7 @@ export default function Modal() {
                                 name='description'
                                 type='text'
                                 className='border m-2 p-1 text-black rounded'
-                                placeholder='What did you buy?'
+                                placeholder='Description'
                             />
                         </label>
                         <label htmlFor='recurring-monthly'>
@@ -83,8 +85,8 @@ export default function Modal() {
                         >
                             Submit
                         </button>
-                    </aside>
-                </form >
+                    </form >
+                </aside>
             }
         </div>
     )
