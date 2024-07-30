@@ -5,7 +5,7 @@ export default async function TransactionList() {
     let transactions = await getTransactions()
         .then(res => JSON.parse(res))
     let total = 0;
-    let rucurrences = 4;
+    let rucurrences = 3;
 
     transactions.forEach(tran => {
         total += tran.amount / 100;
@@ -24,27 +24,37 @@ export default async function TransactionList() {
     total = total.toFixed(2);
 
     return (
-        <div className='flex flex-row justify-start sm:justify-center flex-wrap gap-5 sm:gap-20'>
+        <div className='flex flex-row justify-start sm:justify-center flex-wrap gap-5 sm:gap-20 mt-32'>
             <table className='text-lg'>
-                <tbody>
+                <thead>
                     <tr>
-                        <td className='p-2 border font-bold'>Date</td>
-                        <td className='p-2 border font-bold hidden sm:table-cell'>Monthly</td>
-                        <td className='p-2 border font-bold'>Description</td>
-                        <td className='p-2 border font-bold hidden sm:table-cell'>Type</td>
-                        <td className='p-2 border font-bold'>Amount</td>
-                        <td className='p-2 font-bold'></td>
+                        <th className='p-2 font-bold sticky top-28 z-10'
+                            style={{ backgroundColor: "#264653" }}>Date</th>
+                        <th className='p-2 font-bold hidden sm:table-cell sticky top-28 z-10'
+                            style={{ backgroundColor: "#264653" }}>Monthly</th>
+                        <th className='p-2 font-bold sticky top-28 z-10'
+                            style={{ backgroundColor: "#264653" }}>Description</th>
+                        <th className='p-2 font-bold hidden sm:table-cell sticky top-28 z-10'
+                            style={{ backgroundColor: "#264653" }}>Type</th>
+                        <th className='p-2 font-bold sticky top-28 z-10'
+                            style={{ backgroundColor: "#264653" }}>Amount</th>
+                        <th className='p-2 font-bold sticky top-28 z-10'
+                            style={{ backgroundColor: "#264653" }}></th>
                     </tr>
+                </thead>
+                <tbody>
 
                     {transactions.map((transaction, id) => (
                         <Transaction key={id} transaction={transaction} />
                     ))}
 
-                    <tr>
-                        <td className='p-2 border text-right font-bold' colSpan='4'>Total</td>
-                        <td className='p-2 border text-right'>${total}</td>
-                    </tr>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td className='p-2 text-right font-bold' colSpan='4'>Total:</td>
+                        <td className='p-2 text-right font-bold'>${total}</td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     );

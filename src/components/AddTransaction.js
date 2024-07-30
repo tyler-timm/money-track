@@ -10,16 +10,16 @@ export default function Modal() {
     const dateString = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
 
     return (
-        <div>
+        <div className='mt-32'>
             <button
-                className='bg-blue-700 hover:bg-blue-800 drop-shadow-md px-2 py-1 my-2 rounded'
+                className='bg-blue-700 hover:bg-blue-800 drop-shadow-md px-2 py-1 my-2 rounded xl:fixed'
                 type='button'
                 onClick={() => setModalIsVisible(!modalIsVisible)}
             >
                 Show/Hide
             </button>
             {modalIsVisible &&
-                <aside className='w-96 text-lg leading-normal xl:fixed'>
+                <aside className='w-96 text-lg leading-normal xl:fixed mt-14'>
                     <form action={
                         async formData => {
                             const newData = await createTransaction(formData);

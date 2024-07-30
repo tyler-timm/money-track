@@ -4,7 +4,10 @@ import { UserButton } from '@clerk/nextjs';
 
 export default function Header() {
     return (
-        <div className='flex flex-col justify-center items-center'>
+        <div
+            className='flex flex-col justify-center items-center top-0 fixed w-full z-20'
+            style={{ backgroundColor: "#264653" }}
+        >
             <h1 className='text-5xl font-bold p-5 text-yellow-500'>Money Track</h1>
             <SignedOut>
                 <ul className='self-end justify-center mr-10 text-yellow-500 text-xl'>
@@ -17,6 +20,6 @@ export default function Header() {
                     <UserButton />
                 </ul>
             </SignedIn>
-        </div>
+        </div >
     );
 }
